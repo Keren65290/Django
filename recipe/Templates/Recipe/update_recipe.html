@@ -1,0 +1,24 @@
+{% extends 'Recipe/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Edit Recipe</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="recipe_name">Recipe Name</label>
+            <input type="text" class="form-control" name="recipe_name" value="{{ recipe.recipe_name }}" required>
+        </div>
+        <div class="form-group">
+            <label for="recipe_description">Recipe Description</label>
+            <textarea class="form-control" name="recipe_description" required>{{ recipe.recipe_description }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="recipe_image">Recipe Image</label>
+            <input type="file" class="form-control-file" name="recipe_image">
+            <small class="form-text text-muted">Leave blank to keep the current image.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+{% endblock %}
